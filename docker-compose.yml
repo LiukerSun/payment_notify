@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  pay-notify:
+    build:
+      context: ./pay-notify
+      dockerfile: Dockerfile
+    image: pay-notify:latest
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      # It's recommended to keep secrets out of version control; copy env.sample -> .env and fill values.
+      HMJIASU_KEY: ${HMJIASU_KEY}
+      HMJIASU_PID: ${HMJIASU_PID}
+      PORT: ${PORT:-4000}
+      DATABASE_URL: ${DATABASE_URL}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4000/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+# Optionally you can set secrets (swarm or docker secret) instead of env vars for production.

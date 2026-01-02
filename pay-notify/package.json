@@ -1,0 +1,16 @@
+{
+  "name": "pay-notify",
+  "version": "1.0.0",
+  "description": "hmjiasu notify receiver for my-video-gen",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "pg": "^8.10.0"
+  }
+}
